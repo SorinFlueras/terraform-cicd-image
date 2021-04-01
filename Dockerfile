@@ -62,3 +62,13 @@ RUN pip3 install checkov
 
 # Check install
 RUN checkov --version
+
+################################
+# Install AWS CLI
+################################
+
+# Install
+RUN pip3 --no-cache-dir install --upgrade awscli
+
+# Check install
+RUN aws --version
