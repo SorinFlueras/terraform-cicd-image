@@ -1,6 +1,8 @@
 # Pull base image.
 FROM ubuntu:latest
 
+SHELL ["/bin/bash", "-c"]
+
 RUN \
 # Update
 apt-get update -y && \
@@ -40,7 +42,7 @@ RUN tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
 RUN echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
 
 # Load the new Path variable into the current shell
-RUN /bin/bash -c "source ~/.profile"
+RUN "source ~/.profile"
 
 # Check install
 RUN go version
