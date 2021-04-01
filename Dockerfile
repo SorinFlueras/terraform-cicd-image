@@ -31,7 +31,10 @@ RUN terraform --version
 ################################
 
 # Download and unzip
-RUN wget -c https://dl.google.com/go/go1.14.2.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+RUN wget https://golang.org/dl/go1.15.5.linux-amd64.tar.gz
+
+# Extract
+RUN tar -C /usr/local -xzf go1.15.5.linux-amd64.tar.gz
 
 # Adjust the Path variable
 RUN echo "export PATH=$PATH:/usr/local/go/bin" >> /etc/profile
