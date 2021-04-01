@@ -2,6 +2,7 @@
 FROM ubuntu:latest
 
 SHELL ["/bin/bash", "-c"]
+USER root
 
 RUN \
 # Update
@@ -33,7 +34,11 @@ RUN terraform --version
 ################################
 
 # Download and unzip
-RUN apt-get install -y golang
+RUN wget https://golang.org/dl/go1.16.2.linux-amd64.tar.gz
+
+# Untar
+RUN tar -xvf go1.16.2.linux-amd64.tar.gz -C /usr/local
+ENV PATH="/usr/local/go/bin:${PATH}"
 
 # Check install
 RUN go version
@@ -49,11 +54,11 @@ RUN python3 -V
 RUN pip --version
 
 ################################
-# Install tfsec
+# Install checkob
 ################################
 
-# Download and install
-RUN go get -u github.com/tfsec/tfsec/cmd/tfsec
+# install
+RUN pip3 install checkov
 
 # Check install
-RUN tfsec --version
+RUN checkov --version
