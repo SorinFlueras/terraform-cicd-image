@@ -33,7 +33,7 @@ RUN terraform --version
 ################################
 
 # Download and unzip
-RUN apt-get install golang
+RUN apt-get install -y golang
 
 # Check install
 RUN go version
