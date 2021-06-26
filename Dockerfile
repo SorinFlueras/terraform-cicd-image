@@ -72,3 +72,13 @@ RUN pip3 --no-cache-dir install --upgrade awscli
 
 # Check install
 RUN aws --version
+
+################################
+# Install Git
+################################
+
+# Install
+RUN apt-get install -y git
+
+# Check install
+RUN git --version
